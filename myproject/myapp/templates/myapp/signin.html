@@ -1,0 +1,98 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h4><strong>Logearse</strong> / <strong>Registrarse</strong></h4>
+            <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
+                <a id="login" href="#" class="btn btn-default" role="button">Log In</a>
+                <a id="signin" href="#" class="btn btn-default" role="button">Registrarse</a>
+            </div>
+            <hr>
+            <hr>
+            <div class="alert alert-success" role="alert" style="display: none"><strong>Usuario Creado!</strong> Recarga la página o ve a inicio.</strong></div>
+            <div class="alert alert-warning" role="alert" style="display: none"><strong>Error!</strong> la contraseña no coincide.</strong></div>
+        </div>
+    </div>
+    <div class="row" id="div_login_form">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <form id="login_form" class="form-horizontal" action="/loginuser/" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <input name="email" class="form-control" placeholder="Email" type="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <input name="password" class="form-control" placeholder="Contraseña" type="password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button type="submit" id="login_btn" class="btn btn-primary">Login</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" id="div_signin_form" style="display:none">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
+                <a id="cocinero" href="#" class="btn btn-default" role="button">Cocinero</a>
+                <a id="alumno" href="#" class="btn btn-default" role="button">Alumno</a>
+            </div>
+            <br>
+            <form id="signin_form" class="form-horizontal" action="/createuser/" method="POST">
+                {% csrf_token %}
+                <input id="alumno_input" name="alumno" type="hidden" value=''>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        * <input name="email" class="form-control" placeholder="Email" type="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        * <input name="password1" class="form-control" placeholder="Contraseña" type="password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        * <input name="password2" class="form-control" placeholder="Repetir Contraseña" type="password">
+                    </div>
+                </div>
+                <div id="alumno_inputs" style="display:none">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            * <input name="nombre" class="form-control" placeholder="nombre" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            - <input name="apellidos" class="form-control" placeholder="apellidos" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            * <input name="codigo_postal" class="form-control" placeholder="codigo_postal" type="number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            * <input name="codigo_pais" class="form-control" placeholder="ES" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button type="submit" id="signin_btn_alumno" class="btn btn-primary">Registrarse</button>
+                    </div>
+                </div>
+            </form>
+            <small>* campos obligatorios</small>
+        </div>
+    </div>
+</div>
+<script src="{% static 'myapp/js/signin.js' %}"></script>
+{% endblock %}

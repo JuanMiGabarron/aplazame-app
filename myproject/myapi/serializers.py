@@ -1,9 +1,11 @@
-from myapp.models import Base
+from myapp.models import Curso
 from rest_framework import serializers
 
 
 # We use serializers from models and select the fields showed by the api
-class TradeSerializer(serializers.ModelSerializer):
+class CursoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Base
-        fields = ()
+        model = Curso
+        fields = (
+            'nombre', 'descripcion', 'fecha_inicio',
+            'fecha_fin', 'cocinero', 'alumnos')

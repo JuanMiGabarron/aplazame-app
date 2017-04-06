@@ -1,0 +1,36 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <input type="hidden" id="curso" value="{{curso}}">
+            <input type="hidden" id="alumno_id" value="{{alumno_id}}">
+            <h4><strong>Cursos</strong></h4>
+            <hr>
+            <div class="alert alert-success" role="alert" style="display: none"><strong>Inscrito!</strong></div>
+            {% if group == 'alumnos' %}
+                <button id="joinin"type="button" class="btn btn-primary">Inscribirme</button>
+                <hr>
+            {% endif %}
+            {% if user.is_authenticated %}
+                <table class="table table-bordered text-center" id='cursos_table'>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Fecha inicio</th>
+                        <th>Fecha fin</th>
+                        <th>Cocinero</th>
+                        <th>Alumnos</th>
+                    </tr>
+                </thead>
+            </table>
+            {% else %}
+                <p>Registrate para poder ver el curso</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<script src="{% static 'myapp/js/curso.js' %}"></script>
+{% endblock %}
