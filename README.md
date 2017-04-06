@@ -4,7 +4,7 @@
 
 P- Indica cómo se puede optimizar el rendimiento del servicio de listado de cursos de cocina.
 
-R- Esto siempre será un problema con el que sobrecargaremos el servidor, podríamos montarlo por websockets para que nos actualice solo con las últimas novedades cuando estemos en el listado de cursos, o se podría limitar los cursos que se muestran
+R- Esto siempre será un problema con el que sobrecargaremos el servidor, podríamos montarlo por websockets para que nos actualice solo con las últimas novedades cuando estemos en el listado de cursos, o se podría limitar los cursos que se muestran optimizando las queries a los cursos que estén "activos", es decir que su fecha de fin no haya pasado.
 
 
 P- Dicen que las bases de datos relacionales no escalan bien,
